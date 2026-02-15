@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="accelerometerX" xml:space="preserve">
+    <value>Accéléromètre X : {0:F3}</value>
+  </data>
+  <data name="accelerometerY" xml:space="preserve">
+    <value>Accéléromètre Y : {0:F3}</value>
+  </data>
+  <data name="accelerometerZ" xml:space="preserve">
+    <value>Accéléromètre Z : {0:F3}</value>
+  </data>
+  <data name="altitude" xml:space="preserve">
+    <value>Altitude : {0:F2} m</value>
+  </data>
+  <data name="altitude_accessibility" xml:space="preserve">
+    <value>Altitude : {0:F2} mètres</value>
+  </data>
+  <data name="batteryLevel" xml:space="preserve">
+    <value>Niveau de la batterie : {0:F0}%</value>
+  </data>
+  <data name="batteryLevel_accessibility" xml:space="preserve">
+    <value>Niveau de la batterie : {0:F0} pourcent</value>
+  </data>
+  <data name="cameraView_accessibility" xml:space="preserve">
+    <value>Vue de la caméra pour la lecture des QR codes</value>
+  </data>
+  <data name="averageTime" xml:space="preserve">
+    <value>Temps moyen par cycle : {0:F2} ms</value>
+  </data>
+  <data name="averageTime_accessibility" xml:space="preserve">
+    <value>Temps moyen écoulé par cycle : {0:F2} millisecondes</value>
+  </data>
+  <data name="cpuTestReady_accessibility" xml:space="preserve">
+    <value>Le test CPU est prêt</value>
+  </data>
+  <data name="cpuTestRunning_accessibility" xml:space="preserve">
+    <value>Le test CPU est en cours</value>
+  </data>
+  <data name="cpuTestSection" xml:space="preserve">
+    <value>Test CPU</value>
+  </data>
+  <data name="cpuTestSection_accessibility" xml:space="preserve">
+    <value>Section concernant les tests CPU</value>
+  </data>
+  <data name="deviceInfoSection" xml:space="preserve">
+    <value>Informations de l'appareil</value>
+  </data>
+  <data name="deviceName" xml:space="preserve">
+    <value>Nom de l'appareil : {0}</value>
+  </data>
+  <data name="deviceTitle" xml:space="preserve">
+    <value>Appareil</value>
+  </data>
+  <data name="latitude" xml:space="preserve">
+    <value>Latitude : {0:F6}</value>
+  </data>
+  <data name="liveMetricsSection" xml:space="preserve">
+    <value>Mesures en temps réél</value>
+  </data>
+  <data name="longitude" xml:space="preserve">
+    <value>Longitude : {0:F6}</value>
+  </data>
+  <data name="manufacturer" xml:space="preserve">
+    <value>Constructeur : {0}</value>
+  </data>
+  <data name="memoryTestReady_accessibility" xml:space="preserve">
+    <value>Le test mémoire est prêt</value>
+  </data>
+  <data name="memoryTestRunning_accessibility" xml:space="preserve">
+    <value>Le test mémoire est en cours</value>
+  </data>
+  <data name="model" xml:space="preserve">
+    <value>Modèle : {0}</value>
+  </data>
+  <data name="osVersion" xml:space="preserve">
+    <value>Version de l'OS : {0}</value>
+  </data>
+  <data name="performanceTitle" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="qrTitle" xml:space="preserve">
+    <value>QR Code</value>
+  </data>
+  <data name="testReady" xml:space="preserve">
+    <value>Statut : Prêt</value>
+  </data>
+  <data name="testRunning" xml:space="preserve">
+    <value>Statut : En cours...</value>
+  </data>
+  <data name="runCpuTest" xml:space="preserve">
+    <value>Lancer 10 cribles d'ératosthène</value>
+  </data>
+  <data name="memoryTestSection" xml:space="preserve">
+    <value>Test mémoire</value>
+  </data>
+  <data name="memoryTestSection_accessibility" xml:space="preserve">
+    <value>Section concernant les tests mémoire</value>
+  </data>
+  <data name="growthRate" xml:space="preserve">
+    <value>Taux de croissance : {0:F4} MB / cycle</value>
+  </data>
+  <data name="growthRate_accessibility" xml:space="preserve">
+    <value>Taux de croissance : {0:F4} mégaoctets par cycle</value>
+  </data>
+  <data name="volatility" xml:space="preserve">
+    <value>Volatilité (RMSE) : {0:F4} MB</value>
+  </data>
+  <data name="volatility_accessibility" xml:space="preserve">
+    <value>Volatilité (RMSE) : {0:F4} mégaoctets</value>
+  </data>
+  <data name="intercept" xml:space="preserve">
+    <value>Empreinte structurelle : {0:F4} MB</value>
+  </data>
+  <data name="intercept_accessibility" xml:space="preserve">
+    <value>Empreinte structurelle : {0:F4} mégaoctets</value>
+  </data>
+  <data name="runMemoryTest" xml:space="preserve">
+    <value>Lancer le test mémoire</value>
+  </data>
+  <data name="uiTestSection" xml:space="preserve">
+    <value>Test UI</value>
+  </data>
+  <data name="uiTestSection_accessibility" xml:space="preserve">
+    <value>Section concernant les tests UI</value>
+  </data>
+  <data name="qrAlertTitle" xml:space="preserve">
+    <value>QR Code scanné</value>
+  </data>
+  <data name="qrAlertContent" xml:space="preserve">
+    <value>Contenu : {0}</value>
+  </data>
+  <data name="qrAlertDismiss" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+</root>
