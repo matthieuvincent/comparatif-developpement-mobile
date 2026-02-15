@@ -1,8 +1,36 @@
 # comparatif-developpement-mobile
 
+## Structure du dépôt
+
+```text
+.
+├── adapp-kmp/                  # Code source Kotlin Multiplatform (KMP)
+├── adapp-maui/                 # Code source .Net MAUI
+├── adapp-react/                # Code source React native
+└── comparatif/
+    ├── Android/
+    │   ├── adapp-kmp/          # Screenshots des résultats (KMP)
+    │   ├── adapp-maui/         # Screenshots des résultats (.Net MAUI)
+    │   ├── adapp-react/        # Screenshots des résultats (React Native)
+    │   ├── adapp-kmp.apk
+    │   ├── adapp-kmp.json      # Résultats des tests de performance automatisés (KMP)
+    │   ├── adapp-maui.apk
+    │   ├── adapp-maui.json     # Résultats des tests de performance automatisés (.Net MAUI)
+    │   ├── adapp-react.apk
+    │   └── adapp-react.json    # Résultats des tests de performance automatisés (React Native)
+    ├── iOS/
+    │   ├── adapp-kmp/          # Screenshots des résultats (KMP)
+    │   ├── adapp-maui/         # Screenshots des résultats (.Net MAUI)
+    │   ├── adapp-react/        # Screenshots des résultats (React Native)
+    │   ├── adapp-kmp.ipa
+    │   ├── adapp-maui.ipa
+    │   └── adapp-react.ipa
+    └── maestro.yml             # Script d'automatisation des tests
+```
+
 ## Résultats Android
 
-[moyenne - min - max]
+Tableau récapitulatif des résultats des test pour les applications Android. L'ordre des valeurs est la moyenne, la valeur minimale et la valeur maximale.
 
 |   | .Net Maui | Kotlin Multiplatform | React native |
 |---|---|---|---|
@@ -15,6 +43,8 @@
 | temps moyen / cycle (ms)  | 438,20 - 420,00 - 458,40 | 25,76 - 24,30 - 27,60 | 1276,21 - 1269,75 - 1290,79 |
 
 ## Résultats iOS
+
+Tableau récapitulatif des résultats des test pour les applications iOS. L'ordre des valeurs est la moyenne, la valeur minimale et la valeur maximale.
 
 [moyenne - min - max]
 
