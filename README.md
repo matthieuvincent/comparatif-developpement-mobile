@@ -30,7 +30,7 @@
 
 ## Résultats Android
 
-Tableau récapitulatif des résultats des test pour les applications Android. L'ordre des valeurs est la moyenne, la valeur minimale et la valeur maximale.
+Tableau récapitulatif des résultats des test pour les applications Android. L'ordre des valeurs est moyenne, min et max lorsqu'il y en a plusieurs.
 
 |   | .Net Maui | Kotlin Multiplatform | React native |
 |---|---|---|---|
@@ -46,9 +46,7 @@ Tableau récapitulatif des résultats des test pour les applications Android. L'
 
 ## Résultats iOS
 
-Tableau récapitulatif des résultats des test pour les applications iOS. L'ordre des valeurs est la moyenne, la valeur minimale et la valeur maximale.
-
-[moyenne - min - max]
+Tableau récapitulatif des résultats des test pour les applications iOS. L'ordre des valeurs est moyenne, min et max lorsqu'il y en a plusieurs.
 
 |   | .Net Maui | Kotlin Multiplatform | React native |
 |---|---|---|---|
