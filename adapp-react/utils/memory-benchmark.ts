@@ -61,8 +61,7 @@ export async function runMemoryStressTest(cycles: number, objectCount: number, p
             }
         }
 
-        const currentMemory = await getUsedMemoryMb();
-        memorySamples.push(currentMemory);
+        memorySamples.push(await getUsedMemoryMb());
 
         totalMilliseconds += (performance.now() - start);
 

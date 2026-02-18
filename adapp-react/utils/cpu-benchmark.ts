@@ -1,9 +1,9 @@
 async function computeSieveOfEratosthenes(limit: number): Promise<number> {
   if (limit < 2) return 0;
 
-  const isPrime = new Uint8Array(limit + 1).fill(1);
-  isPrime[0] = 0;
-  isPrime[1] = 0;
+  const isPrime: boolean[] = new Array(limit + 1).fill(true);
+  isPrime[0] = false;
+  isPrime[1] = false;
 
   const sqrtLimit = Math.floor(Math.sqrt(limit));
 
@@ -11,19 +11,14 @@ async function computeSieveOfEratosthenes(limit: number): Promise<number> {
     if (!isPrime[i]) continue;
 
     for (let j = i * i; j <= limit; j += i) {
-      isPrime[j] = 0;
+      isPrime[j] = false;
     }
 
     // Libère le thread pour mise à jour UI
     await new Promise(resolve => setTimeout(resolve, 1));
   }
 
-  let count = 0;
-  for (let i = 2; i <= limit; i++) {
-    count += isPrime[i];
-  }
-
-  return count;
+  return isPrime.filter(Boolean).length;
 }
 
 export async function runSieveOfEratosthenes(limit: number, cycles: number): Promise<number> {

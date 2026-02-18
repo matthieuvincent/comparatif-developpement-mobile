@@ -2,6 +2,31 @@
 
 public static class ComputeUtils
 {
+    public static int SieveOfEratosthenes(int limit)
+    {
+        if (limit < 2)
+            return 0;
+
+        var isPrime = new bool[limit + 1];
+        Array.Fill(isPrime, true);
+
+        isPrime[0] = false;
+        isPrime[1] = false;
+
+        int sqrtLimit = (int)Math.Sqrt(limit);
+
+        for (int i = 2; i <= sqrtLimit; i++)
+        {
+            if (!isPrime[i])
+                continue;
+
+            for (int j = i * i; j <= limit; j += i)
+                isPrime[j] = false;
+        }
+
+        return isPrime.Count(true);
+    }
+    
     public static double ComputeGrowthRate(IReadOnlyList<double> samples)
     {
         int n = samples.Count;

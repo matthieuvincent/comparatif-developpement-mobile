@@ -120,7 +120,7 @@ public class PerformanceViewModel : BaseTabContentViewModel
             var elapsedMs = await Task.Run(() =>
             {
                 var sw = Stopwatch.StartNew();
-                var primes = SieveOfEratosthenes();
+                _ = ComputeUtils.SieveOfEratosthenes(ERATOSTHENES_LIMIT);
                 sw.Stop();
                 return sw.ElapsedMilliseconds;
             });
@@ -138,8 +138,6 @@ public class PerformanceViewModel : BaseTabContentViewModel
 
         var survivors = new List<MemoryObject>();
         var memorySamples = new List<double>(capacity: MEMORY_STRESS_CYCLES);
-        // Sauvegarde de la mémoire de base avant le stress test
-        double baseMemory = GC.GetTotalMemory(forceFullCollection: false) * BYTES_TO_MB;
         long totalMilliseconds = 0;
 
         var (intercept, slope, rmse, memoryAverageElapsetTimePerCycle) = await Task.Run(() =>
@@ -157,7 +155,6 @@ public class PerformanceViewModel : BaseTabContentViewModel
                     }
                 }
 
-                // Récupération de la mémoire en fin de cycle
                 memorySamples.Add(GC.GetTotalMemory(forceFullCollection: false) * BYTES_TO_MB);
 
                 stopwatch.Stop();
@@ -165,30 +162,8 @@ public class PerformanceViewModel : BaseTabContentViewModel
             }
 
             double slope = ComputeUtils.ComputeGrowthRate(memorySamples);
-            //L’intercept modélise l’empreinte mémoire structurelle du runtime, tandis que le RMSE quantifie l’instabilité induite par le Garbage Collector autour de cette base idéale.
-            /*
-             * Supposons qu'on ai :
-             * cycle 1 -> 48
-             * cycle 2 -> 56
-             * cycle 3 -> 65
-             * ...
-             * cycle 10 -> 126
-             * 
-             * La régression donne :
-             *      y^=8.7x+39\hat{y} = 8.7x + 39y^​=8.7x+39
-             *      pente = 8.7 MB / cycle
-             *      intercept = 39 MB
-             *      
-             *      ➡️ Cela signifie : Le framework consomme environ 39 MB avant toute création significative d’objets utilisateurs.
-             */
             (double rmse, double intercept) = ComputeUtils.ComputeVolatility(memorySamples, slope);
 
-            /*
-                Intercept → empreinte fixe (coût de plateforme)
-                Growth Rate → coût marginal par cycle
-                RMSE → stabilité du GC
-                Residual Ratio → coût réel par objet conservé
-             */
             return (intercept, slope, rmse, totalMilliseconds / (double)MEMORY_STRESS_CYCLES);
         });
 
@@ -197,64 +172,11 @@ public class PerformanceViewModel : BaseTabContentViewModel
         Intercept = intercept;
         MemoryAverageElapsetTimePerCycle = memoryAverageElapsetTimePerCycle;
 
-        /*
-Growth rate : 34,3924 MB / cycle
-Volatility (RMSE) : 2,1356 MB
-Intercept : 9,8994 MB
-Residual Ratio : 358,8240 bytes / object
-
-        Interpretation : 
-            Growth rate : a chaque cycle, la memoire augmente de 34.4MB en moyenne
-
-            Inercept : C'est l'empreinte structurelle du runtime MAUI avant toute accumulation liée aux cycles.
-
-            Volatility : Variation moyenne autour de la croissance idéale. A comparer au Growth Rate (Volatility / GrowthRate) = 0.062. 6% c'est faible, cela indique une gestion très stable et prévisible de la mémoire par le GC.
-
-            Residual ratio : Comme on fait des objets de 256 bytes, on s'attend a un ratio proche de 256 bytes / object. Ici on a 358.8 bytes / object, donc environ +100bytes d'overhead (header d'objet, alignementm références, structure du GC). C'est une mesure correcte qui ne montre pas de fuite de mémoire.
-         */
-
         memorySamples.Clear();
-        memorySamples = null;
         survivors.Clear();
-        survivors = null;
         IsMemoryRunning = false;
     }
-
-    private List<int> SieveOfEratosthenes()
-    {
-        int n = ERATOSTHENES_LIMIT;
-        if (n < 2)
-            return new List<int>();
-
-        var isPrime = new bool[n + 1];
-        Array.Fill(isPrime, true);
-
-        isPrime[0] = false;
-        isPrime[1] = false;
-
-        int limit = (int)Math.Sqrt(n);
-
-        for (int i = 2; i <= limit; i++)
-        {
-            if (!isPrime[i])
-                continue;
-
-            for (int j = i * i; j <= n; j += i)
-                isPrime[j] = false;
-        }
-
-        int approxCount = (int)(n / Math.Log(n));
-        var primes = new List<int>(approxCount);
-
-        for (int i = 2; i <= n; i++)
-        {
-            if (isPrime[i])
-                primes.Add(i);
-        }
-
-        return primes;
-    }
-
+    
     private List<UIImage> CreateUIImageList()
     {
         var items = new List<UIImage>(UI_ITEM_COUNT);

@@ -5,17 +5,17 @@ import kotlin.math.sqrt
 
 object ComputeUtils {
 
-    fun computeSieveOfEratosthenes(limit: Int): List<Int> {
-        if (limit < 2) return emptyList()
+    fun computeSieveOfEratosthenes(limit: Int): Int {
+        if (limit < 2) return 0;
 
         val isPrime = BooleanArray(limit + 1) { true }
 
         isPrime[0] = false
         isPrime[1] = false
 
-        val limit = sqrt(limit.toDouble()).toInt()
+        val sqrtLimit = sqrt(limit.toDouble()).toInt()
 
-        for (i in 2..limit) {
+        for (i in 2..sqrtLimit) {
             if (!isPrime[i]) continue
 
             for (j in (i * i)..limit step i) {
@@ -23,16 +23,7 @@ object ComputeUtils {
             }
         }
 
-        val approxCount = (limit / ln(limit.toDouble())).toInt()
-        val primes = ArrayList<Int>(approxCount)
-
-        for (i in 2..limit) {
-            if (isPrime[i]) {
-                primes.add(i)
-            }
-        }
-
-        return primes
+        return isPrime.count { it }
     }
 
     fun computeGrowthRate(samples: List<Double>): Double {

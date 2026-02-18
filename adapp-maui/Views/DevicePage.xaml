@@ -24,6 +24,7 @@
 			
 			<Frame
                 BorderColor="LightGray"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
                 CornerRadius="10"
                 Padding="15"
                 HasShadow="True">
@@ -48,6 +49,7 @@
 
 			<Frame
                 BorderColor="LightGray"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
                 CornerRadius="10"
                 Padding="15"
                 HasShadow="True">
