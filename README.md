@@ -37,7 +37,7 @@ Tableau récapitulatif des résultats des test pour les applications Android. L'
 | **Application**  |   |   |   |
 | Taille (Mo)  | 43,3 | 32,4 | 121,4 |
 | **Test CPU**  |   |   |   |
-| temps moyen / cycle (ms)  | 181,7 - 176,2 - 187,1 | 251,56 - 247,10 - 256,20 | 4947,07 - 4908,15 - 4967,16 |
+| temps moyen / cycle (ms)  | 181,70 - 176,20 - 187,10 | 251,56 - 247,10 - 256,20 | 4947,07 - 4908,15 - 4967,16 |
 | **Test mémoire**  |   |   |   |
 | Taux de croissance (MB / cycle)  | 34,8396 - 34,8353 - 34,8428 | 9,6298 - 5,8821 - 15,0519 | 36,2731 - 36,2716 - 36,2759 |
 | RMSE (MB)  | 1,6608 - 1,6390 - 1,6935 | 13,3801 - 3,7087 - 18,8839 | 1,0331 - 1,0307 - 1,0339 |
