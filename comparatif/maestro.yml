@@ -1,0 +1,52 @@
+#flashlight test --bundleId lu.etat.ad.app.maui --testCommand "maestro test maestro.yml" --iterationCount 5 --resultsFilePath adapp-maui.json
+appId: lu.etat.ad.app.maui
+ 
+#flashlight test --bundleId lu.etat.ad.app.kmp --testCommand "maestro test maestro.yml" --iterationCount 5 --resultsFilePath adapp-kmp.json
+#appId: lu.etat.ad.app.kmp
+ 
+#flashlight test --bundleId lu.etat.ad.app.react --testCommand "maestro test maestro.yml" --iterationCount 5 --resultsFilePath adapp-react.json
+#appId: lu.etat.ad.app.react
+---
+- launchApp
+ 
+- assertVisible:
+    text: "Appareil"
+    optional: true
+ 
+- tapOn: "Performance"
+ 
+- tapOn:
+    id: "sieve_eratosthenes_button"
+ 
+- extendedWaitUntil:
+    visible:
+        id: "sieve_eratosthenes_button"
+        enabled: true
+    timeout: 99999
+ 
+- tapOn:
+    id: "memory_test_button"
+ 
+# Pour le test de l'application React car le bouton mets du temps avant de se disable
+#- assertVisible:
+#    id: "memory_test_button"
+#    enabled: false
+ 
+- extendedWaitUntil:
+    visible:
+        id: "memory_test_button"
+        enabled: true
+    timeout: 99999
+ 
+- takeScreenshot: screens/screen_${Date.now()}
+ 
+- swipe:              
+    direction: UP
+ 
+- repeat:
+    times: 10
+    commands:
+      - swipe:
+          start: 50%,80%
+          end: 50%,10%
+          duration: 80

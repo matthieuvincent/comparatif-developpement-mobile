@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AD.APP.ViewModels"
+    xmlns:views="clr-namespace:AD.APP.Views.Base"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:resources="clr-namespace:AD.APP.Resources;assembly=AD.APP"
+    x:TypeArguments="vm:PerformanceViewModel"
+    x:Class="AD.APP.Views.PerformancePage"
+    Title="{Binding Title}"
+    IconImageSource="{Binding Icon}">
+
+    <views:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </views:BaseContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout 
+            Padding="20,40"
+            Spacing="15">
+
+            <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold"
+                   SemanticProperties.Description="{Binding Title}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            
+            <Frame 
+                BorderColor="LightGray"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
+                CornerRadius="10"
+                Padding="15"
+                HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{x:Static resources:Labels.cpuTestSection}" FontSize="15" FontAttributes="Bold"
+                           SemanticProperties.Description="{x:Static resources:Labels.cpuTestSection_accessibility}"
+                           SemanticProperties.HeadingLevel="Level2" />
+                    <Label Text="{x:Static resources:Labels.testReady}" IsVisible="{Binding IsEratosthenesRunning, Converter={StaticResource InvertedBoolConverter}}"
+                           SemanticProperties.Description="{x:Static resources:Labels.cpuTestReady_accessibility}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{x:Static resources:Labels.testRunning}" IsVisible="{Binding IsEratosthenesRunning}"
+                           SemanticProperties.Description="{x:Static resources:Labels.cpuTestRunning_accessibility}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{Binding CpuAverageElapsedTimePerCycle, StringFormat={x:Static resources:Labels.averageTime}}"
+                           SemanticProperties.Description="{Binding CpuAverageElapsedTimePerCycle, StringFormat={x:Static resources:Labels.averageTime_accessibility}}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Button 
+                        AutomationId="sieve_eratosthenes_button"
+                        Text="{x:Static resources:Labels.runCpuTest}"
+                        CornerRadius="5"
+                        HeightRequest="50"
+                        IsEnabled="{Binding IsEratosthenesRunning, Converter={StaticResource InvertedBoolConverter}}"
+                        Command="{Binding RunSieveOfEratosthenesCommand}"
+                        SemanticProperties.Description="{x:Static resources:Labels.runCpuTest}"
+                        SemanticProperties.HeadingLevel="Level3" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame 
+                BorderColor="LightGray"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
+                CornerRadius="10"
+                Padding="15"
+                HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{x:Static resources:Labels.memoryTestSection}" FontSize="15" FontAttributes="Bold"
+                           SemanticProperties.Description="{x:Static resources:Labels.memoryTestSection_accessibility}"
+                           SemanticProperties.HeadingLevel="Level2" />
+                    <Label Text="{x:Static resources:Labels.testReady}" IsVisible="{Binding IsMemoryRunning, Converter={StaticResource InvertedBoolConverter}}"
+                           SemanticProperties.Description="{x:Static resources:Labels.memoryTestReady_accessibility}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{x:Static resources:Labels.testRunning}" IsVisible="{Binding IsMemoryRunning}"
+                           SemanticProperties.Description="{x:Static resources:Labels.memoryTestRunning_accessibility}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{Binding GrowthRate, StringFormat={x:Static resources:Labels.growthRate}}"
+                           SemanticProperties.Description="{Binding GrowthRate, StringFormat={x:Static resources:Labels.growthRate_accessibility}}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{Binding Volatility, StringFormat={x:Static resources:Labels.volatility}}"
+                           SemanticProperties.Description="{Binding Volatility, StringFormat={x:Static resources:Labels.volatility_accessibility}}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{Binding Intercept, StringFormat={x:Static resources:Labels.intercept}}"
+                           SemanticProperties.Description="{Binding Intercept, StringFormat={x:Static resources:Labels.intercept_accessibility}}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Label Text="{Binding MemoryAverageElapsetTimePerCycle, StringFormat={x:Static resources:Labels.averageTime}}"
+                           SemanticProperties.Description="{Binding MemoryAverageElapsetTimePerCycle, StringFormat={x:Static resources:Labels.averageTime_accessibility}}"
+                           SemanticProperties.HeadingLevel="Level3" />
+                    <Button 
+                        AutomationId="memory_test_button"
+                        Text="{x:Static resources:Labels.runMemoryTest}"
+                        CornerRadius="5"
+                        HeightRequest="50"
+                        IsEnabled="{Binding IsMemoryRunning, Converter={StaticResource InvertedBoolConverter}}"
+                        Command="{Binding RunMemoryStressTestCommand}"
+                        SemanticProperties.Description="{x:Static resources:Labels.runMemoryTest}"
+                        SemanticProperties.HeadingLevel="Level3" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame 
+                BorderColor="LightGray"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
+                CornerRadius="10"
+                Padding="15"
+                HasShadow="True">
+                <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                    <Label Grid.Row="0" Text="{x:Static resources:Labels.uiTestSection}" FontSize="15" FontAttributes="Bold"
+                           SemanticProperties.Description="{x:Static resources:Labels.uiTestSection_accessibility}"
+                           SemanticProperties.HeadingLevel="Level2" />
+                    <CollectionView 
+                        x:Name="ImagesCollectionView"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Items}"
+                        ItemsLayout="VerticalList"
+                        ItemSizingStrategy="MeasureFirstItem"
+                        HeightRequest="650">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Image
+                                        Source="{Binding Image}"
+                                        Aspect="AspectFit"/>
+                                    <Border 
+                                        Stroke="LightGray"
+                                        HorizontalOptions="Fill"
+                                        StrokeShape="Rectangle"
+                                        HeightRequest="150"
+                                        Opacity="0.8">
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="1,0">
+                                                <GradientStop Color="Green" Offset="0.1" />
+                                                <GradientStop Color="Yellow" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</views:BaseContentPage>
